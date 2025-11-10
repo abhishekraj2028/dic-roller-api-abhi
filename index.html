@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Roller API Test</title>
+</head>
+<body>
+    <h1>Dice Roller API Tester</h1>
+    <button onclick="rollDice()">Roll Dice</button>
+    <p id="output"></p>
+
+    <script>
+        async function rollDice() {
+            const response = await fetch('/api/roll?sides=6&rolls=3');
+            const data = await response.json();
+            document.getElementById('output').innerText = 
+                `Rolled ${data.rolls}d${data.sides}: ${data.results.join(', ')}`;
+        }
+    </script>
+</body>
+</html>
